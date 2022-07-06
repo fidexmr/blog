@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: var(--font-size);
+            margin: 0;
+            padding-right: 5px;
+            max-width: 860px;
+            border-right: solid 1px var(--color-light);
+            height: 100%;
+            padding-left: calc(var(--width-numberstab) + 20px);
+            width: calc(100% - var(--width-numberstab) - 50px);
+            position: absolute;
+            background-color: var(--color-background);
+            color: var(--color-text);
+            --color-text: rgb(197, 197, 197);
+            --color-coloured: #e5a05a;
+            --color-background: #333;
+            --color-lighter: #666;
+            --color-light: #444;
+            --color-dark: hsla(0, 0%, 13%, 50%);
+            --width-numberstab: 50px; 
+            --width-numberstab-mobile: 30px;
+            --font-size: 14px;
+        }
+        p, h1, h2, ul{
+            margin:0;
+            padding:0;
+        }
+        h1, h2 {
+            color: var(--color-coloured);
+            padding-top: calc(var(--font-size) + 3px);
+            font-size: calc(2 * var(--font-size));
+        }
+        h2::before{
+            content: "# "
+        }
+        ul li {
+            margin-left: 17px;
+        }
+        a {
+            color: var(--color-text);
+        }
+        main {
+            margin-left: 10px;
+            overflow-wrap: break-word;
+        }
+        aside {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%
+        }
+        aside table {
+            counter-reset: rowNumber;
+            width: var(--width-numberstab);
+            color: var(--color-lighter);
+            padding-right: 3px;
+            border-spacing: 0;
+        }
+        aside table tr::before {
+            display: table-cell;
+            counter-increment: rowNumber;
+            content: counter(rowNumber);
+            text-align: right;
+        }
+        @media (max-width: 780px) {
+            body {
+                padding-left: calc(var(--width-numberstab-mobile));
+                width: calc(100% - var(--width-numberstab-mobile) - 25px);
+            }
+            aside table {
+                width: var(--width-numberstab-mobile);
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>FideX</h1>
+        <h2>whoami</h2>
+        <p>I'm a Solidity / graphics / front-end developer. <br>I like decentralisation and privacy technologies.</p>
+        <h2>contact</h2>
+        <p><a href="https://github.com/fidexmr">Github</a> :: <a href="https://twitter.com/FideXmr">Twitter</a> :: fidexmr@dnmx.org</p>
+        <p>PGP: 3385 FEE4 E543 EA96 DF70 2658 1D6E B7A6 47C6 9F94</p>
+        <p>XMR: 8ALhPdH7QkHNmUT9nkkTqMdMp5m5CaE114bbWfB711qz4f8iq4EMKWJX2R2KJGAyTZK7L6rUbtYquTZok61ipERCNRV8bC4</p>
+        <h2>proof-of-work</h2>
+        <ul>
+            <li><a href="https://detactoe.surge.sh">Solidity portfolio</a></li>
+            <li><a href="https://interexperiments.surge.sh">Graphics portfolio</a></li>
+        </ul>
+        <h2>3rd-party links:</h2>
+        <ul> Privacy: 
+            <li><a href="https://digdeeper.neocities.org/index.html">Dig Deeper</a></li>
+            <li><a href="https://sethforprivacy.com/">SethForPrivacy</a></li>
+            <li><a href="https://privacytools.io">Privacy tools</a></li>
+            <li><a href="https://kycnot.me">Kycnot</a></li>
+        </ul>
+        <ul> Experimenting blockchains: 
+            <li><a href="https://beta.layer3.xyz/bounties/">Layer3</a></li>
+        </ul>
+        <ul> dApp mastering: 
+            <li><a href="https://solidity-by-example.org/">Examples</a></li>
+            <li><a href="https://ethereum-contract-security-techniques-and-tips.readthedocs.io/en/latest/">Best practices</a></li>
+            <li><a href="https://swcregistry.io/docs/SWC-100">SWC</a></li>
+        </ul>
+    </main>
+    <aside>
+        <table></table>
+    </aside>
+    <script>
+        function generateRowsNumbers(){
+            const rowsCount = Math.floor(document.body.scrollHeight / 16);
+            const table = document.querySelector("aside table");
+            if(table === undefined) return;
+            let content = "";
+            for (let i = 0; i < rowsCount; i++) content += "<tr>";
+            table.innerHTML = content;
+        }
+        generateRowsNumbers()
+        window.addEventListener("resize", generateRowsNumbers);
+    </script>
+</body>
+</html>
